@@ -11,5 +11,18 @@
     "started": "2025-01-10",
     "finished": null,
     "notes": ""
+  },
+    {
+    "id": "harry-potter-1",
+    "title": "Harry Potter i Kamień Filozoficzny",
+    "author": "JK Rowling",
+    "isbn": null,
+    "status": "finished",
+    "progress": 100,
+    "rating": 10,
+    "reread": true,
+    "started": "2025-01-18",
+    "finished": "2025-01-20",
+    "notes": ""
   }
 ]
