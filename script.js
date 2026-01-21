@@ -1,16 +1,22 @@
 fetch("books.json")
-  .then(response => response.json())
+  .then(res => res.json())
   .then(books => {
-    const list = document.getElementById("books-list");
+    const container = document.getElementById("books-list");
 
     books.forEach(book => {
-      const li = document.createElement("li");
+      const bookEl = document.createElement("div");
 
-      li.textContent = `${book.title} — ${book.author} (${book.status}, ${book.progress}%)`;
+      bookEl.innerHTML = `
+        <h2>${book.title}</h2>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Status:</strong> ${book.status}</p>
+        <p><strong>Progress:</strong> ${book.progress}%</p>
+        ${book.rating !== null ? `<p><strong>Rating:</strong> ${book.rating}/10</p>` : ""}
+        ${book.reread ? `<p>🔁 Re-read</p>` : ""}
+        <hr />
+      `;
 
-      list.appendChild(li);
+      container.appendChild(bookEl);
     });
   })
-  .catch(error => {
-    console.error("Error loading books:", error);
-  });
+  .catch(err => console.error(err));
