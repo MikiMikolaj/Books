@@ -27,6 +27,15 @@ function getEffectiveDate(book) {
 // 3. Core logic (sort / filter)
 // ======================
 
+function filterBooks(books, query) {
+  if (!query) return books;
+
+  return books.filter(book =>
+    book.title.toLowerCase().includes(query) ||
+    book.author.toLowerCase().includes(query)
+  );
+}
+
 function sortBooks(books, mode = "date", direction = "desc") {
   const sorted = [...books]; // never mutate original data
 
