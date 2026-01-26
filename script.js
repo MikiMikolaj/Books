@@ -109,7 +109,7 @@ function createBookElement(book) {
 function updateView() {
   const filtered = filterBooks(allBooks, currentQuery);
   //const sorted = sortBooks(filtered, sortMode, sortDirection);
-  const sorted = sortBooks(allBooks, "date", "asc");
+  const sorted = sortBooks(allBooks, "rank", "desc");
   renderBooks(sorted);
 }
 
