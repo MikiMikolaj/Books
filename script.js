@@ -1,8 +1,10 @@
-// 1. State
+// ======================
+// 1. App state
+// ======================
 
 let allBooks = [];
-
-// 2. Data loading
+let sortMode = "date";
+let sortDirection = "desc";
 
 fetch("books.json")
   .then(res => res.json())
@@ -12,12 +14,18 @@ fetch("books.json")
   })
   .catch(err => console.error("Failed to load books:", err));
 
-// 3. Functions
+// ======================
+// 2. Helpers
+// ======================
 
 function getEffectiveDate(book) {
   // Finished date takes priority, otherwise fallback to started
   return new Date(book.finished || book.started);
 }
+
+// ======================
+// 3. Core logic (sort / filter)
+// ======================
 
 function sortBooks(books, mode = "date", direction = "desc") {
   const sorted = [...books]; // never mutate original data
@@ -54,6 +62,10 @@ function sortBooks(books, mode = "date", direction = "desc") {
   return sorted;
 }
 
+// ======================
+// 4. Rendering
+// ======================
+
 function renderBooks(books) {
   //Rendering
   const container = document.getElementById("books-list");
@@ -81,32 +93,30 @@ function createBookElement(book) {
   return el;
 }
 
+// ======================
+// 5. App bootstrap
+// ======================
+
+function updateView() {
+  const filtered = filterBooks(allBooks, currentQuery);
+  const sorted = sortBooks(filtered, sortMode, sortDirection);
+  renderBooks(sorted);
+}
+
 function initApp() {
   fetch("books.json")
     .then(res => res.json())
     .then(data => {
       allBooks = data;
-
-      const sorted = sortBooks(allBooks);
-      renderBooks(sorted);
+      updateView();
     });
+
+  const searchInput = document.getElementById("search");
+
+  searchInput.addEventListener("input", e => {
+    currentQuery = e.target.value.toLowerCase();
+    updateView();
+  });
 }
 
-// Run the app
 initApp();
-
-
-// 4. Event wiring (search)
-
-const searchInput = document.getElementById("search");
-
-searchInput.addEventListener("input", event => {
-  const query = event.target.value.toLowerCase();
-
-  const filteredBooks = allBooks.filter(book =>
-    book.title.toLowerCase().includes(query) ||
-    book.author.toLowerCase().includes(query)
-  );
-
-  renderBooks(filteredBooks);
-});
