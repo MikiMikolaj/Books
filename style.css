@@ -1,0 +1,181 @@
+:root {
+    --bg-color: #f9f9f9;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --border-color: #ddd;
+    --accent-color: #222;
+    --card-bg: #fff;
+    --progress-bar-bg: #eee;
+    --progress-fill: #333;
+    --spacing: 16px;
+    --max-width: 800px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Layout Containers */
+.site-header, .controls, main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.site-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: var(--spacing);
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input, select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+input {
+    min-width: 250px;
+}
+
+/* Year Header */
+.year-separator {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    margin: 30px 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Book Row/Card */
+.book-row {
+    background: var(--card-bg);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.book-author {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.book-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    min-width: 120px;
+}
+
+/* Badges and Status */
+.badge {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-reread {
+    background-color: #e0e0e0;
+    color: #444;
+}
+
+.badge-abandoned {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.status-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.rating {
+    font-weight: bold;
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100px;
+    height: 6px;
+    background-color: var(--progress-bar-bg);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--progress-fill);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .book-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .book-meta {
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+}

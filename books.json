@@ -1,28 +1,62 @@
 [
   {
-    "id": "smart-notes",
-    "title": "How to Take Smart Notes",
-    "author": "Sönke Ahrens",
-    "isbn": "9781542866507",
+    "id": "1",
+    "title": "The Wager",
+    "author": "David Grann",
     "status": "reading",
-    "progress": 42,
+    "progress": 45,
     "rating": null,
     "reread": false,
     "started": "2025-01-10",
     "finished": null,
-    "notes": ""
+    "notes": "Gripping narrative so far."
   },
-    {
-    "id": "harry-potter-1",
-    "title": "Harry Potter i Kamień Filozoficzny",
-    "author": "JK Rowling",
-    "isbn": null,
+  {
+    "id": "2",
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "status": "finished",
+    "progress": 100,
+    "rating": 9,
+    "reread": true,
+    "started": "2025-01-01",
+    "finished": "2025-01-05",
+    "notes": "Second read through. Still valuable."
+  },
+  {
+    "id": "3",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "status": "abandoned",
+    "progress": 20,
+    "rating": null,
+    "reread": false,
+    "started": "2024-12-15",
+    "finished": null,
+    "notes": "Too dense for right now."
+  },
+  {
+    "id": "4",
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
     "status": "finished",
     "progress": 100,
     "rating": 10,
-    "reread": true,
-    "started": "2025-01-18",
-    "finished": "2025-01-20",
-    "notes": ""
+    "reread": false,
+    "started": "2024-11-01",
+    "finished": "2024-11-10",
+    "notes": "Amazing science fiction."
+  },
+  {
+    "id": "5",
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "status": "planned",
+    "progress": 0,
+    "rating": null,
+    "reread": false,
+    "started": null,
+    "finished": null,
+    "notes": null
   }
 ]
