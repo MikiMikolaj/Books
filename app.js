@@ -145,4 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     }
+    function buildBookHTML(book) {
+    let metaContent = '';
+
+    if (book.status === 'reading') {
+        metaContent = `<span class="status-reading">Reading Now</span>`;
+    } else if (book.status === 'abandoned') {
+        metaContent = `<span class="status-abandoned">Abandoned</span>`;
+    } else {
+        // Show rating if finished
+        const rereadIcon = book.reread ? `<span class="re-read-tag">↺ RE-READ</span>` : '';
+        metaContent = `${rereadIcon} ${book.rating ? book.rating + '/10' : 'N/A'}`;
+    }
+
+    return `
+        <div class="book-info">
+            <span class="book-title">${book.title}</span>
+            <span class="book-author">${book.author}</span>
+        </div>
+        <div class="book-meta">
+            ${metaContent}
+        </div>
+    `;
+}
 });

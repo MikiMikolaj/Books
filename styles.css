@@ -1,181 +1,191 @@
 :root {
-    --bg-color: #f9f9f9;
-    --text-primary: #333;
-    --text-secondary: #666;
-    --border-color: #ddd;
-    --accent-color: #222;
-    --card-bg: #fff;
-    --progress-bar-bg: #eee;
-    --progress-fill: #333;
-    --spacing: 16px;
-    --max-width: 800px;
-}
-
-* {
-    box-sizing: border-box;
+    --bg-dark: #1e2023;
+    --paper-white: #f8f8f8;
+    --text-on-dark: #ffffff;
+    --text-muted: #888;
+    --accent-red: #e67e73;
+    --notebook-line: #e0e0e0;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.5;
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
-/* Layout Containers */
-.site-header, .controls, main {
-    max-width: var(--max-width);
+.site-wrapper {
+    max-width: 900px;
     margin: 0 auto;
+    padding: 40px 20px;
 }
 
-.site-header {
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--accent-color);
+/* Header & Hero */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 60px;
+    opacity: 0.7;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
 }
 
 h1 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 5rem;
+    margin: 0;
+}
+
+.hero-right {
+    max-width: 200px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    text-align: right;
+    opacity: 0.8;
 }
 
 /* Controls */
 .controls {
     display: flex;
-    gap: var(--spacing);
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
-.control-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+.search-wrapper { flex: 1; }
 
 input, select {
-    padding: 8px;
-    border: 1px solid var(--border-color);
-    background: var(--card-bg);
-    border-radius: 4px;
-    font-size: 0.9rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
 }
 
-input {
-    min-width: 250px;
+input { width: 100%; }
+
+/* The Notebook Area */
+.notebook-container {
+    background-color: var(--paper-white);
+    color: #333;
+    min-height: 600px;
+    position: relative;
+    padding: 40px 40px 40px 80px; /* Large left padding for the margin */
 }
 
-/* Year Header */
+/* The vertical line */
+.notebook-container::before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--notebook-line);
+}
+
+/* The dots in the margin */
+#book-list {
+    position: relative;
+}
+
 .year-separator {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--text-secondary);
-    margin: 30px 0 10px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--border-color);
+    font-size: 2rem;
+    color: #bbb;
+    margin: 20px 0 40px 0;
 }
 
-/* Book Row/Card */
+/* Book Rows */
 .book-row {
-    background: var(--card-bg);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
 }
 
-.book-info {
-    flex: 1;
+/* Creating the "bullet" dot for each row in the margin */
+.book-row::before {
+    content: '';
+    position: absolute;
+    left: -35px; /* Positions it in the margin area */
+    top: 28px;
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 50%;
 }
 
 .book-title {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     display: block;
 }
 
 .book-author {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 .book-meta {
     text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-    min-width: 120px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-/* Badges and Status */
-.badge {
-    font-size: 0.75rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
+/* Status Specifics */
+.status-reading {
+    color: #aaa;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-reading::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-red);
+    border-radius: 50%;
+}
+
+.status-abandoned {
+    color: #ccc;
+    font-size: 0.7rem;
     text-transform: uppercase;
 }
 
-.badge-reread {
-    background-color: #e0e0e0;
-    color: #444;
+.re-read-tag {
+    font-size: 0.6rem;
+    color: #aaa;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
-.badge-abandoned {
-    background-color: #ffebee;
-    color: #c62828;
+/* Footer */
+.site-footer {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.5;
 }
 
-.status-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-}
-
-.rating {
-    font-weight: bold;
-}
-
-/* Progress Bar */
-.progress-container {
-    width: 100px;
-    height: 6px;
-    background-color: var(--progress-bar-bg);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 4px;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: var(--progress-fill);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .controls {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .book-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .book-meta {
-        align-items: flex-start;
-        text-align: left;
-        width: 100%;
-    }
+.site-footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2rem;
 }

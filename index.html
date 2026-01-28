@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of the books</title>
+    <title>Lista Książek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header class="site-header">
-        <h1>List of the books</h1>
-    </header>
+    <div class="site-wrapper">
+        <header class="top-nav">
+            <span>Mikołaj Mikołajczak 2026</span>
+            <span class="icon">📖</span>
+        </header>
 
-    <div class="controls">
-        <div class="control-group">
-            <input type="text" id="searchInput" placeholder="Filter by title or author...">
-        </div>
+        <section class="hero">
+            <div class="hero-left">
+                <h1>Lista Książek</h1>
+            </div>
+            <div class="hero-right">
+                <p>Lista książek przeczytanych lub czytanych przeze mnie od 2026 roku.</p>
+            </div>
+        </section>
 
-        <div class="control-group">
-            <label for="sortSelect">Sort by:</label>
-            <select id="sortSelect">
-                <option value="newest">Newest to Oldest</option>
-                <option value="oldest">Oldest to Newest</option>
-                <option value="rating-high">Highest Rating</option>
-                <option value="rating-low">Lowest Rating</option>
-            </select>
-        </div>
-
-        <div class="control-group">
-            <label for="yearSelect">Year:</label>
+        <nav class="controls">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Szukaj tytułu lub autora...">
+            </div>
             <select id="yearSelect">
-                <option value="all">All Years</option>
-                </select>
-        </div>
-    </div>
+                <option value="all">Wszystkie lata</option>
+            </select>
+            <select id="sortSelect">
+                <option value="newest">Od najnowszego</option>
+                <option value="oldest">Od najstarszego</option>
+            </select>
+        </nav>
 
-    <main id="book-list">
-        <p class="loading-text">Loading library...</p>
-    </main>
+        <main class="notebook-container">
+            <div id="book-list">
+                </div>
+        </main>
+
+        <footer class="site-footer">
+            <h2>Lista Książek</h2>
+            <p>Mikołaj Mikołajczak 2026</p>
+        </footer>
+    </div>
 
     <script src="app.js"></script>
 </body>
